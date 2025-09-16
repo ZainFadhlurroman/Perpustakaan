@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistem Manajemen Perpustakaan</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>📚 Sistem Manajemen Perpustakaan</h1>
+            <p>Kelola koleksi buku perpustakaan dengan mudah</p>
+        </div>
+        
+        <div class="controls">
+            <div class="btn-group">
+                <button onclick="tampilkanBuku()">📖 Tampilkan Semua Buku</button>
+                <button class="btn-add" onclick="showAddForm()">➕ Tambah Buku Baru</button>
+                <button class="btn-delete" onclick="showDeleteForm()">🗑️ Hapus Buku</button>
+            </div>
+        </div>
+        
+        <div id="content"></div>
+    </div>
+
+    <div id="addForm" class="form-overlay">
+        <div class="form-container">
+            <h3 style="margin-bottom: 20px; color: #2d3748;">Tambah Buku Baru</h3>
+            <div class="form-group">
+                <label>Judul Buku:</label>
+                <input type="text" id="judulBuku" placeholder="Masukkan judul buku">
+            </div>
+            <div class="form-group">
+                <label>Penulis:</label>
+                <input type="text" id="penulisBuku" placeholder="Masukkan nama penulis">
+            </div>
+            <div class="form-group">
+                <label>Penerbit:</label>
+                <input type="text" id="penerbitBuku" placeholder="Masukkan nama penerbit">
+            </div>
+            <div class="form-group">
+                <label>Jumlah Buku:</label>
+                <input type="number" id="jumlahBuku" placeholder="Masukkan jumlah buku" min="1">
+            </div>
+            <div class="form-buttons">
+                <button class="btn-cancel" onclick="hideAddForm()">Batal</button>
+                <button class="btn-add" onclick="tambahBuku()">Tambah</button>
+            </div>
+        </div>
+    </div>
+
+    <div id="deleteForm" class="form-overlay">
+        <div class="form-container">
+            <h3 style="margin-bottom: 20px; color: #2d3748;">Hapus Buku</h3>
+            <div class="form-group">
+                <label>Nomor Akses:</label>
+                <input type="number" id="nomorAksesHapus" placeholder="Masukkan nomor akses buku yang akan dihapus" min="1">
+            </div>
+            <div class="form-buttons">
+                <button class="btn-cancel" onclick="hideDeleteForm()">Batal</button>
+                <button class="btn-delete" onclick="hapusBuku()">Hapus</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
