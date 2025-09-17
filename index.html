@@ -1,23 +1,41 @@
 <!DOCTYPE html>
 <html lang="id">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sistem Perpustakaan</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
 </head>
+
 <body>
     <div class="container">
         <div class="header">
-            <h1>📚Perpustakaan</h1>
+            <h1><i class="fa-solid fa-book"></i> Perpustakaan</h1>
             <div class="menu-buttons">
-                <button class="btn" onclick="tampilkanBuku()">📋 Daftar Buku</button>
-                <button class="btn" onclick="tambahkanBuku()">➕ Tambah Buku</button>
-                <button class="btn" onclick="menerbitkanBuku()">🗑️ Hapus Buku</button>
+                <button class="btn" onclick="tampilkanBuku()">
+                    <i class="fa-solid fa-list"></i> Daftar Buku
+                </button>
+                <button class="btn" onclick="tambahkanBuku()">
+                    <i class="fa-solid fa-plus"></i> Tambah Buku
+                </button>
+                <button class="btn" onclick="menerbitkanBuku()">
+                    <i class="fa-solid fa-trash"></i> Hapus Buku
+                </button>
+            </div>
+            <div class="btn-down">
+                <button class="btn" onclick="tambahinJumlahBuku()">
+                    <i class="fa-solid fa-circle-plus"></i> Tambah Jumlah Buku
+                </button>
+                <button class="btn" onclick="kuranginJumlahBuku()">
+                    <i class="fa-solid fa-circle-minus"></i> Kurang Jumlah Buku
+                </button>
             </div>
         </div>
         <div id="content" class="content"></div>
     </div>
     <script src="script.js"></script>
 </body>
+
 </html>

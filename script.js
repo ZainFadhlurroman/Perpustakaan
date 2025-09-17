@@ -103,7 +103,7 @@ function pushBuku() {
     alert("Semua data harus diisi");
     return;
   }
-  
+
   if (isNaN(jumlahBuku) || jumlahBuku <= 0) {
     alert("Jumlah buku tidak valid");
     return;
@@ -134,7 +134,7 @@ function menerbitkanBuku() {
     <button class="btn" onclick="deleteBuku()">Menerbitkan</button>
         <h2>Daftar Buku yang tersedia</h2>
   `;
-  
+
   for (let i = 0; i < daftarBuku.length; i++) {
     content.innerHTML += `
     <h4>${daftarBuku[i].nomorAkses} = ${daftarBuku[i].judul}</h4>
@@ -145,17 +145,96 @@ function menerbitkanBuku() {
 }
 
 function deleteBuku() {
-  const targetNomorAkses = parseInt(document.getElementById("terbitBuku").value);
+  const targetNomorAkses = parseInt(
+    document.getElementById("terbitBuku").value
+  );
 
   if (isNaN(targetNomorAkses) || targetNomorAkses <= 0) {
     alert("Nomor akses buku tidak valid!");
     return;
   }
-  
+
   daftarBuku.splice(targetNomorAkses - 1, 1);
-  
+
   alert("Buku berhasil dihapus");
   tampilkanBuku();
+}
+
+function tambahinJumlahBuku() {
+  const content = document.getElementById("content");
+  content.innerHTML = `
+    <h2>Tambah Jumlah Buku</h2>
+    <div class="form-group">
+        <label for="terbitBuku">Masukkan nomor akses yang ingin ditambah:</label>
+        <input type="number" id="inputNomorAkses" placeholder="Contoh: 1, 2, 3...">
+    </div>
+    <button class="btn" onclick="tambahJumlah()">Tambah Jumlah Buku</button>
+    <h2>Daftar Buku yang tersedia</h2>
+    `;
+  for (let i = 0; i < daftarBuku.length; i++) {
+    content.innerHTML += `
+      <h4>${daftarBuku[i].judul} kode akses: ${daftarBuku[i].nomorAkses} <br><span class="underline">jumlah buku: ${daftarBuku[i].jumlahBuku}</span></h4>
+      `;
+  }
+
+  content.style.display = "block";
+}
+
+function tambahJumlah() {
+  const inputNomorAkses = parseInt(
+    document.getElementById("inputNomorAkses").value
+  );
+
+  if (isNaN(inputNomorAkses) || inputNomorAkses <= 0) {
+    alert("Nomor akses buku tidak valid!");
+    return;
+  }
+
+  const buku = daftarBuku.findIndex(buku => buku.nomorAkses === inputNomorAkses);
+  daftarBuku[buku].jumlahBuku++;
+  alert("Jumlah buku berhasil ditambahkan");
+  tampilkanBuku();
+}
+
+function kuranginJumlahBuku() {
+  const content = document.getElementById("content");
+  content.innerHTML = `
+    <h2>Tambah Jumlah Buku</h2>
+    <div class="form-group">
+        <label for="terbitBuku">Masukkan nomor akses yang ingin dikurangi:</label>
+        <input type="number" id="inputNomorAkses" placeholder="Contoh: 1, 2, 3...">
+    </div>
+    <button class="btn" onclick="kurangJumlah()">kurangin Jumlah Buku</button>
+      <h2>Daftar Buku yang tersedia</h2>
+
+    `;
+  for (let i = 0; i < daftarBuku.length; i++) {
+    content.innerHTML += `
+      <h4>${daftarBuku[i].judul} kode akses: ${daftarBuku[i].nomorAkses} <br><span class="underline">jumlah buku: ${daftarBuku[i].jumlahBuku}</span></h4>
+      `;
+  }
+
+  content.style.display = "block";
+}
+
+function kurangJumlah() {
+  const inputNomorAkses = parseInt(
+    document.getElementById("inputNomorAkses").value
+  );
+
+  if (isNaN(inputNomorAkses) || inputNomorAkses <= 0) {
+    alert("Nomor akses buku tidak valid!");
+    return;
+  }
+
+  const buku = daftarBuku.findIndex(buku => buku.nomorAkses === inputNomorAkses);
+  daftarBuku[buku].jumlahBuku--;
+  alert("Jumlah buku berhasil dikurangim");
+  tampilkanBuku();
+
+  if (daftarBuku[buku].jumlahBuku === 0) {
+    daftarBuku.splice(buku, 1);
+  }
 }
 
 window.onload = tampilkanBuku;
